@@ -1,7 +1,7 @@
 tags # ignore the fucking ctags!!!
 # Prerequisites
 *.d
-
+*.bin
 # Object files
 *.o
 *.ko
