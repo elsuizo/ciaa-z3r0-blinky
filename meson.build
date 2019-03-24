@@ -17,9 +17,9 @@ startupfile = files(['external_dependencies/sapi/libs/Device/SiliconLabs/EFM32HG
 # NOTE(elsuizo:2019-03-24): esto no se si va...
 #==============================================================================#
 # # # parse linkerfiles to a linker commando
-# foreach linkfile : linkfiles
-#  link_args += ['-Wl,-T,@0@/@1@'.format(meson.current_source_dir(), linkfile)]
-# endforeach
+foreach linkfile : linkfiles
+ link_args += ['-Wl,-T,@0@/@1@'.format(meson.current_source_dir(), linkfile)]
+endforeach
 #==============================================================================#
 
 

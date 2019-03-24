@@ -26,7 +26,7 @@ c_args      = [
 
                '-Wall',
                '-ffreestanding',
-               '-mcpu=cortex-m0plus'
+               '-mcpu=cortex-m0'
                #------------------------------------
                # '-flto',
                ]
@@ -39,5 +39,5 @@ c_link_args = [
 [host_machine]
 system     = 'none'
 cpu_family = 'arm'
-cpu        = 'cortex-m0plus'
+cpu        = 'cortex-m0'
 endian     = 'little'
