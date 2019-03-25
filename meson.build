@@ -10,7 +10,7 @@ link_args  =  []
 link_deps  =  []
 #==============================================================================#
 # uController / HAL Driver dependend options
-c_args     += '-DEFM32HG322F64=1' # HAL Driver define
+c_args     += '-DEFM32HG322F64' # HAL Driver define
 linkfiles   = files(['external_dependencies/sapi/libs/Device/SiliconLabs/EFM32HG/Source/GCC/efm32hg.ld'])
 startupfile = files(['external_dependencies/sapi/libs/Device/SiliconLabs/EFM32HG/Source/GCC/startup_efm32hg.c'])
 
@@ -32,7 +32,7 @@ main = executable(
             [srcs, sapi_srcs, 'program.c'] ,
             name_suffix         : 'elf',
             c_args              : [c_args ],
-            link_args           : [link_args, '-Wl,--gc-sections'],
+            link_args           : [link_args, '-Wl,--gc-sections','--specs=nano.specs', '--specs=rdimon.specs'],
             dependencies        : link_deps,
             include_directories : [inc_dir, sapi_include_dirs] )
 
