@@ -14,3 +14,5 @@ En el root del archivo (osea `ciaa-z3r0-blinky`) hacemos:
 `meson gccbuild --cross-file=cross_file_gcc.build`
 
 Donde: `gccbuild` puede ser cualquier nombre que le queramos asignar a la carpeta de salida
+
+Luego: `cd gccbuild && ninja`
