@@ -13,6 +13,19 @@ c_args     += '-DEFM32HG322F64=1' # HAL Driver define
 linkfiles   = files(['external_dependencies/sapi/libs/Device/SiliconLabs/EFM32HG/Source/GCC/efm32hg.ld'])
 startupfile = files(['external_dependencies/sapi/libs/Device/SiliconLabs/EFM32HG/Source/GCC/startup_efm32hg.c'])
 
+#==============================================================================#
+# convenience function : link correct C-runtime for each controller
+# TODO: use llvm compiler-rt
+arch       = (host_machine.cpu() == 'cortex-m0') or (host_machine.cpu() == 'cortex-m0+') or (host_machine.cpu() == 'cortex-m1') ? 'armv6-m'  : ''
+arch      += (host_machine.cpu() == 'cortex-m3') ?                                                                                'armv7-m'  : ''
+arch      += (host_machine.cpu() == 'cortex-m4') or (host_machine.cpu() == 'cortex-m7') ?                                         'armv7e-m' : ''
+
+link_deps +=  meson.get_compiler('c').find_library('/usr/lib/gcc/arm-none-eabi/8.3.0/@0@/libgcc'.format(arch))
+# we have to define the std headers : for stdint.h
+if meson.get_compiler('c').get_id() == 'gcc'
+  inc_dir += include_directories('/usr/arm-none-eabi/include') # bare-metal : std header includes
+endif
+
 # NOTE(elsuizo:2019-03-24): esto no se si va...
 #==============================================================================#
 # # # parse linkerfiles to a linker commando
