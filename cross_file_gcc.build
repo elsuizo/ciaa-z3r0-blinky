@@ -18,14 +18,14 @@ exe_wrapper = 'meson_exe_wrapper.sh'
 c_args      = [
                '-mthumb',                   # define language
                #------------------------------------
-               '-fshort-enums',             # otherwise errors at linking...
-               '-fmessage-length=0',        # all error warnings in a single line (default 72)
-               '-fsigned-char',             # char is per default unsigned
-               '-ffunction-sections',       # each function to a seperate section ==> Code-optimization / deletion
-               '-fdata-sections',           # each variable to a seperate section ==> Code-optimization / deletion
+               # '-fshort-enums',             # otherwise errors at linking...
+               # '-fmessage-length=0',        # all error warnings in a single line (default 72)
+               # '-fsigned-char',             # char is per default unsigned
+               # '-ffunction-sections',       # each function to a seperate section ==> Code-optimization / deletion
+               # '-fdata-sections',           # each variable to a seperate section ==> Code-optimization / deletion
 
                '-Wall',
-               '-ffreestanding',
+               # '-ffreestanding',
                '-mcpu=cortex-m0'
                #------------------------------------
                # '-flto',
@@ -33,7 +33,7 @@ c_args      = [
 
 c_link_args = [
                 '-nostdlib',             # do not import the standard library's
-                '-nostartfiles',
+                # '-nostartfiles',
               ]
 
 [host_machine]
